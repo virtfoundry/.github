@@ -1,23 +1,41 @@
 # VirtFoundry
 
-**Kubernetes-native private cloud** — multi-tenant IaaS on [KubeVirt](https://kubevirt.io/).
+**Kubernetes-native private cloud** — multi-tenant IaaS on [KubeVirt](https://kubevirt.io/) with a CloudStack-like API and UI.
 
-Tenants, VPCs, VMs, volumes, snapshots, IAM, and a web UI. Built for people leaving **Proxmox** (or avoiding raw KubeVirt YAML) who already run Kubernetes.
+Built for teams leaving **Proxmox** (or avoiding raw KubeVirt YAML) who already run Kubernetes.
+
+## What you get
+
+| Layer | Technology |
+|-------|------------|
+| **Control plane** | Go REST API + React UI |
+| **Source of truth** | [`virtfoundry.io`](https://github.com/virtfoundry/operator) CRDs + [operator](https://github.com/virtfoundry/operator) |
+| **Hypervisor** | KubeVirt |
+| **Networking** | Multus, tenant VPCs, optional MetalLB VIPs |
+| **GitOps** | Helm + Argo CD friendly (no MySQL in production path) |
+
+Homelab E2E suite covers VM lifecycle, volumes, snapshots, tenant IAM, and L4 load balancers on the CR store.
 
 ## Start here
 
 | | |
 |--|--|
-| **Docs (front door)** | https://virtfoundry.github.io/helm-charts/docs/ |
+| **Documentation** | https://virtfoundry.github.io/helm-charts/docs/ |
 | **Quickstart (< 30 min)** | https://virtfoundry.github.io/helm-charts/docs/guide/quickstart/ |
-| **Why VirtFoundry** | https://github.com/virtfoundry/core/blob/main/docs/WHY.md |
+| **Why VirtFoundry** | https://virtfoundry.github.io/helm-charts/docs/guide/why/ |
+| **Adopters** | https://github.com/virtfoundry/core/blob/main/ADOPTERS.md |
+| **CNCF readiness** | https://github.com/virtfoundry/core/blob/main/docs/CNCF-CHECKLIST.md |
 | **Discussions** | https://github.com/virtfoundry/core/discussions |
-| **Traction board** | https://github.com/orgs/virtfoundry/projects/1 |
 
 ```bash
 helm repo add virtfoundry https://virtfoundry.github.io/helm-charts
+helm repo update
+
+helm install virtfoundry-operator virtfoundry/virtfoundry-operator \
+  -n virtfoundry-system --create-namespace
+
 helm install virtfoundry virtfoundry/virtfoundry \
-  -n virtfoundry-system --create-namespace \
+  -n virtfoundry-system \
   --set secrets.rootPassword='change-me' \
   --set secrets.jwtSecret='change-me'
 ```
@@ -26,8 +44,27 @@ helm install virtfoundry virtfoundry/virtfoundry \
 
 | Repo | Role |
 |------|------|
-| [core](https://github.com/virtfoundry/core) | API, worker, UI |
-| [helm-charts](https://github.com/virtfoundry/helm-charts) | Helm chart + documentation site |
+| [core](https://github.com/virtfoundry/core) | REST API, UI, kubernetes store client |
+| [operator](https://github.com/virtfoundry/operator) | CRDs + controllers (Tenant, Instance, …) |
+| [helm-charts](https://github.com/virtfoundry/helm-charts) | Helm charts + documentation site |
 | [terraform-provider-virtfoundry](https://github.com/virtfoundry/terraform-provider-virtfoundry) | Terraform provider |
 
-Apache 2.0 · Maintained by the VirtFoundry org
+## Adopters
+
+| Who | Type |
+|-----|------|
+| [Matheus Thurler](https://github.com/Matheus-Thurler) | Homelab / maintainer |
+| [Rodrigo Gonçalves](https://github.com/RodrigoGoncalves-dev) | Homelab / maintainer |
+
+[Add your homelab or PoC →](https://github.com/virtfoundry/core/blob/main/ADOPTERS.md)
+
+## Maintainers
+
+| Name | GitHub | Role |
+|------|--------|------|
+| Matheus Thurler | [@Matheus-Thurler](https://github.com/Matheus-Thurler) | Lead maintainer |
+| Rodrigo Gonçalves | [@RodrigoGoncalves-dev](https://github.com/RodrigoGoncalves-dev) | Maintainer |
+
+[GOVERNANCE](https://github.com/virtfoundry/core/blob/main/GOVERNANCE.md) · [CONTRIBUTING](https://github.com/virtfoundry/core/blob/main/CONTRIBUTING.md) · [SECURITY](https://github.com/virtfoundry/core/blob/main/SECURITY.md)
+
+Apache 2.0 · Open governance · [Contributor Covenant](https://github.com/virtfoundry/core/blob/main/CODE_OF_CONDUCT.md)
