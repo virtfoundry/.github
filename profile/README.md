@@ -12,7 +12,7 @@ Built for teams leaving **Proxmox** (or avoiding raw KubeVirt YAML) who already 
 | **Source of truth** | [`virtfoundry.io`](https://github.com/virtfoundry/operator) CRDs + [operator](https://github.com/virtfoundry/operator) |
 | **Hypervisor** | KubeVirt |
 | **Networking** | Multus, tenant VPCs, optional MetalLB VIPs |
-| **GitOps** | Helm + Argo CD friendly (no MySQL in production path) |
+| **GitOps** | Helm + Argo CD · CRD store (no MySQL) |
 
 Homelab E2E suite covers VM lifecycle, volumes, snapshots, tenant IAM, and L4 load balancers on the CR store.
 
@@ -21,6 +21,7 @@ Homelab E2E suite covers VM lifecycle, volumes, snapshots, tenant IAM, and L4 lo
 | | |
 |--|--|
 | **Documentation** | https://virtfoundry.github.io/helm-charts/docs/ |
+| **Prerequisites** | https://virtfoundry.github.io/helm-charts/docs/guide/prerequisites/ |
 | **Quickstart (< 30 min)** | https://virtfoundry.github.io/helm-charts/docs/guide/quickstart/ |
 | **Why VirtFoundry** | https://virtfoundry.github.io/helm-charts/docs/guide/why/ |
 | **Adopters** | https://github.com/virtfoundry/core/blob/main/ADOPTERS.md |
