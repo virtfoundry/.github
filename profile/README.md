@@ -28,14 +28,18 @@ Homelab E2E suite covers VM lifecycle, volumes, snapshots, tenant IAM, and L4 lo
 | **CNCF readiness** | https://github.com/virtfoundry/core/blob/main/docs/CNCF-CHECKLIST.md |
 | **Discussions** | https://github.com/virtfoundry/core/discussions |
 
+Current release: **0.7.0** (pin both charts).
+
 ```bash
 helm repo add virtfoundry https://virtfoundry.github.io/helm-charts
 helm repo update
 
 helm install virtfoundry-operator virtfoundry/virtfoundry-operator \
+  --version 0.7.0 \
   -n virtfoundry-system --create-namespace
 
 helm install virtfoundry virtfoundry/virtfoundry \
+  --version 0.7.0 \
   -n virtfoundry-system \
   --set secrets.rootPassword='change-me' \
   --set secrets.jwtSecret='change-me'
@@ -61,11 +65,11 @@ helm install virtfoundry virtfoundry/virtfoundry \
 
 ## Maintainers
 
-| Name | GitHub | Role |
-|------|--------|------|
-| Matheus Thurler | [@Matheus-Thurler](https://github.com/Matheus-Thurler) | Lead maintainer |
-| Rodrigo Gonçalves | [@RodrigoGoncalves-dev](https://github.com/RodrigoGoncalves-dev) | Maintainer |
+| Name | GitHub | Company | Role |
+|------|--------|---------|------|
+| Matheus Thurler | [@Matheus-Thurler](https://github.com/Matheus-Thurler) | CI&T | Lead — DevOps / SRE |
+| Rodrigo Gonçalves | [@RodrigoGoncalves-dev](https://github.com/RodrigoGoncalves-dev) | SYS MANAGER INFORMATICA LTDA | Maintainer — full-stack |
 
-[GOVERNANCE](https://github.com/virtfoundry/core/blob/main/GOVERNANCE.md) · [CONTRIBUTING](https://github.com/virtfoundry/core/blob/main/CONTRIBUTING.md) · [SECURITY](https://github.com/virtfoundry/core/blob/main/SECURITY.md)
+Canonical: [MAINTAINERS.md](https://github.com/virtfoundry/core/blob/main/MAINTAINERS.md) · [GOVERNANCE](https://github.com/virtfoundry/core/blob/main/GOVERNANCE.md) · [CONTRIBUTING](https://github.com/virtfoundry/core/blob/main/CONTRIBUTING.md) · [SECURITY](https://github.com/virtfoundry/core/blob/main/SECURITY.md)
 
-Apache 2.0 · Open governance · [Contributor Covenant](https://github.com/virtfoundry/core/blob/main/CODE_OF_CONDUCT.md)
+Apache 2.0 · [CNCF Code of Conduct](https://github.com/virtfoundry/core/blob/main/CODE_OF_CONDUCT.md)
