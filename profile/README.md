@@ -59,6 +59,7 @@ helm install virtfoundry virtfoundry/virtfoundry \
 | Who | Type |
 |-----|------|
 | [Matheus Thurler](https://github.com/Matheus-Thurler) | Homelab / maintainer |
+| [Weslei Paulo Pereira](https://github.com/wesleip) | Homelab / maintainer |
 | [Rodrigo Gonçalves](https://github.com/RodrigoGoncalves-dev) | Homelab / maintainer |
 
 [Add your homelab or PoC →](https://github.com/virtfoundry/core/blob/main/ADOPTERS.md)
@@ -68,6 +69,7 @@ helm install virtfoundry virtfoundry/virtfoundry \
 | Name | GitHub | Company | Role |
 |------|--------|---------|------|
 | Matheus Thurler | [@Matheus-Thurler](https://github.com/Matheus-Thurler) | CI&T | Lead — DevOps / SRE |
+| Weslei Paulo Pereira | [@wesleip](https://github.com/wesleip) | CI&T | Maintainer — DevOps / SRE |
 | Rodrigo Gonçalves | [@RodrigoGoncalves-dev](https://github.com/RodrigoGoncalves-dev) | SYS MANAGER INFORMATICA LTDA | Maintainer — full-stack |
 
 Canonical: [MAINTAINERS.md](https://github.com/virtfoundry/core/blob/main/MAINTAINERS.md) · [GOVERNANCE](https://github.com/virtfoundry/core/blob/main/GOVERNANCE.md) · [CONTRIBUTING](https://github.com/virtfoundry/core/blob/main/CONTRIBUTING.md) · [SECURITY](https://github.com/virtfoundry/core/blob/main/SECURITY.md)
