@@ -28,18 +28,18 @@ Homelab E2E suite covers VM lifecycle, volumes, snapshots, tenant IAM, and L4 lo
 | **CNCF readiness** | https://github.com/virtfoundry/core/blob/main/docs/CNCF-CHECKLIST.md |
 | **Discussions** | https://github.com/virtfoundry/core/discussions |
 
-Current release: **0.7.0** (pin both charts).
+Current release: **0.7.1** (pin both charts).
 
 ```bash
 helm repo add virtfoundry https://virtfoundry.github.io/helm-charts
 helm repo update
 
 helm install virtfoundry-operator virtfoundry/virtfoundry-operator \
-  --version 0.7.0 \
+  --version 0.7.1 \
   -n virtfoundry-system --create-namespace
 
 helm install virtfoundry virtfoundry/virtfoundry \
-  --version 0.7.0 \
+  --version 0.7.1 \
   -n virtfoundry-system \
   --set secrets.rootPassword='change-me' \
   --set secrets.jwtSecret='change-me'
