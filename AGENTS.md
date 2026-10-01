@@ -18,7 +18,8 @@ Rules: `typescript-exhaustive-switch`, `no-inline-imports`.
 
 ## VirtFoundry (org)
 
-- SemVer produto **0.8.x**; Terraform provider mantém série própria.
+- SemVer produto **0.9.x**; Terraform provider mantém série própria.
+- Em **todo** fechamento de versão: bump `profile/README.md` (landing da org) + pins no site GitHub Pages (`helm-charts/docs/**`). Sempre ficam atrasados se o release PR não tocar aqui.
 - Testes no **homelab** — nunca Kind como gate.
 - Preview sem commit / tag / release só com pedido explícito do maintainer.
 - Cada repo tem seu próprio `AGENTS.md` na raiz — preferir aquele ao editar código.
