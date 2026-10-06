@@ -12,6 +12,8 @@ Built for teams leaving **Proxmox** (or avoiding raw KubeVirt YAML) who already 
 | **Source of truth** | [`virtfoundry.io`](https://github.com/virtfoundry/operator) CRDs + [operator](https://github.com/virtfoundry/operator) |
 | **Hypervisor** | KubeVirt |
 | **Networking** | Multus, tenant VPCs, optional MetalLB VIPs |
+| **Kubernetes as a service** | [VKS](https://virtfoundry.github.io/helm-charts/docs/guide/features/vks/): managed clusters, [Kamaji](https://kamaji.clastix.io/) control plane, VM workers |
+| **Infrastructure as code** | [Terraform provider](https://virtfoundry.github.io/helm-charts/docs/guide/terraform/) |
 | **GitOps** | Helm + Argo CD · CRD store (no MySQL) |
 
 Homelab E2E suite covers VM lifecycle, volumes, snapshots, tenant IAM, and L4 load balancers on the CR store.
@@ -23,12 +25,15 @@ Homelab E2E suite covers VM lifecycle, volumes, snapshots, tenant IAM, and L4 lo
 | **Documentation** | https://virtfoundry.github.io/helm-charts/docs/ |
 | **Prerequisites** | https://virtfoundry.github.io/helm-charts/docs/guide/prerequisites/ |
 | **Quickstart (< 30 min)** | https://virtfoundry.github.io/helm-charts/docs/guide/quickstart/ |
+| **Kubernetes clusters (VKS)** | https://virtfoundry.github.io/helm-charts/docs/guide/features/vks/ |
+| **Terraform provider** | https://virtfoundry.github.io/helm-charts/docs/guide/terraform/ |
+| **Troubleshooting** | https://virtfoundry.github.io/helm-charts/docs/guide/troubleshooting/ |
 | **Why VirtFoundry** | https://virtfoundry.github.io/helm-charts/docs/guide/why/ |
 | **Adopters** | https://github.com/virtfoundry/core/blob/main/ADOPTERS.md |
 | **CNCF readiness** | https://github.com/virtfoundry/core/blob/main/docs/CNCF-CHECKLIST.md |
 | **Discussions** | https://github.com/virtfoundry/core/discussions |
 
-Current release: **0.10.0** (pin both charts).
+Current release: **0.10.0** (pin both charts). Terraform provider: **0.4.0**.
 
 ```bash
 helm repo add virtfoundry https://virtfoundry.github.io/helm-charts
@@ -45,12 +50,21 @@ helm install virtfoundry virtfoundry/virtfoundry \
   --set secrets.jwtSecret='change-me'
 ```
 
+Optional, for managed Kubernetes clusters (needs [Kamaji](https://virtfoundry.github.io/helm-charts/docs/guide/prerequisites/#optional-kubernetes-clusters-vks); chart is installed from the repo, not the Helm index):
+
+```bash
+git clone --branch v0.10.0 https://github.com/virtfoundry/vks.git
+helm install virtfoundry-vks ./vks/charts/virtfoundry-vks -n virtfoundry-system
+```
+
 ## Repositories
 
 | Repo | Role |
 |------|------|
 | [core](https://github.com/virtfoundry/core) | REST API, UI, kubernetes store client |
 | [operator](https://github.com/virtfoundry/operator) | CRDs + controllers (Tenant, Instance, …) |
+| [vks](https://github.com/virtfoundry/vks) | VKS operator: `VKSCluster` to Kamaji control plane + worker Instances |
+| [vks-image-factory](https://github.com/virtfoundry/vks-image-factory) | Node image (`node-ubuntu` containerDisk) for VKS workers |
 | [helm-charts](https://github.com/virtfoundry/helm-charts) | Helm charts + documentation site |
 | [terraform-provider-virtfoundry](https://github.com/virtfoundry/terraform-provider-virtfoundry) | Terraform provider |
 
