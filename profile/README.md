@@ -33,22 +33,22 @@ Homelab E2E suite covers VM lifecycle, volumes, snapshots, tenant IAM, and L4 lo
 | **CNCF readiness** | https://github.com/virtfoundry/core/blob/main/docs/CNCF-CHECKLIST.md |
 | **Discussions** | https://github.com/virtfoundry/core/discussions |
 
-Current release: **0.11.2** (pin both charts). Terraform provider: **0.4.0**.
+Current release: **0.11.3** (pin both charts). Terraform provider: **0.4.1**.
 
 ```bash
 helm repo add virtfoundry https://virtfoundry.github.io/helm-charts
 helm repo update
 
 helm install virtfoundry-crds virtfoundry/virtfoundry-crds \
-  --version 0.11.2 \
+  --version 0.11.3 \
   -n virtfoundry-system --create-namespace
 
 helm install virtfoundry-operator virtfoundry/virtfoundry-operator \
-  --version 0.11.2 \
+  --version 0.11.3 \
   -n virtfoundry-system
 
 helm install virtfoundry virtfoundry/virtfoundry \
-  --version 0.11.2 \
+  --version 0.11.3 \
   -n virtfoundry-system \
   --set secrets.rootPassword='change-me' \
   --set secrets.jwtSecret='change-me'
@@ -57,7 +57,7 @@ helm install virtfoundry virtfoundry/virtfoundry \
 Optional, for managed Kubernetes clusters (needs [Kamaji](https://virtfoundry.github.io/helm-charts/docs/guide/prerequisites/#optional-kubernetes-clusters-vks); chart is installed from the repo, not the Helm index):
 
 ```bash
-git clone --branch v0.11.2 https://github.com/virtfoundry/vks.git
+git clone --branch v0.11.3 https://github.com/virtfoundry/vks.git
 helm install virtfoundry-vks ./vks/charts/virtfoundry-vks -n virtfoundry-system
 ```
 
